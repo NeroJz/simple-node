@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 12.13
+
+services:
+  - docker
+
+script:
+  - docker build -t nerojz/simple-node .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+  - docker push nerojz/simple-node
